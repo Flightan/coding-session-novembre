@@ -1,0 +1,9 @@
+.idea
+node_modules
+.git
+dist
+.DS_Store
+*.log
+.tmp/*
+yarn.lock
+public
