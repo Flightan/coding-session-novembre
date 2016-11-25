@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --progress --inline --hot --quiet --colors --open",
     "build": "webpack",
     "lint": "eslint src/**/*.jsx",
-    "mocha": "mocha --reporter spec --compilers js:babel-register -r jsdom-global/register --recursive 'src/**/*.spec.{js,jsx}'",
+    "mocha": "mocha --reporter spec --compilers js:babel-register -r jsdom-global/register -r ignore-styles --recursive 'src/**/*.spec.{js,jsx}'",
     "test": "yarn lint & yarn mocha"
   },
   "devDependencies": {
@@ -32,11 +32,13 @@
   },
   "dependencies": {
     "babel-core": "^6.18.2",
+    "css-loader": "^0.26.0",
     "fetch-mock": "^5.5.0",
     "react": "^15.3.2",
     "react-autosuggest": "^7.0.1",
     "react-dom": "^15.3.2",
     "sinon": "^1.17.6",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "whatwg-fetch": "^2.0.1"
   }

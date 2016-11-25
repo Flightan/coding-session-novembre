@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import ApiHelper from '../ApiHelper/ApiHelper';
+import './AutocompleteInput.css';
 
 export function renderSuggestion(suggestion) {
   return <span>{ suggestion.label }</span>;
