@@ -2,23 +2,17 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import AutocompleteInput, { renderResult } from './AutocompleteInput';
+import AutocompleteInput, { renderSuggestion, getSuggestionValue } from './AutocompleteInput';
 
 describe('AutocompleteInput component', () => {
-  it('should contain input', () => {
-    const wrapper = shallow(<AutocompleteInput />);
-
-    expect(wrapper.containsMatchingElement(<input />)).to.equal(true);
-  });
-
-  describe('onChange', () => {
+  describe('onSuggestionsFetchRequested', () => {
     it('should call ApiHelper and set state with result', () => {
       const expectedResult = [{ label: 'fakeResult' }];
       const wrapper = shallow(<AutocompleteInput />);
-      const fakeEvent = { target: { value: 'toto' } };
+      const fakeValue = { value: 'toto' };
       const fetcherStub = sinon.stub().returns(Promise.resolve({ result: expectedResult }));
 
-      wrapper.instance().onChange(fakeEvent, fetcherStub)
+      wrapper.instance().onSuggestionsFetchRequested(fakeValue, fetcherStub)
         .then(() => {
           expect(fetcherStub.called).to.equal(true);
           expect(wrapper.update().state('result')).to.equal(expectedResult);
@@ -26,24 +20,20 @@ describe('AutocompleteInput component', () => {
     });
   });
 
-  describe('renderResult', () => {
-    describe('when there is an error', () => {
-      it('should return a div with error message', () => {
-        const result = renderResult(null, { message: 'fakeError' });
-        const wrapper = shallow(result);
+  describe('renderSuggestion', () => {
+    it('should return a div with error message', () => {
+      const result = renderSuggestion({ label: 'fakeLabel' });
+      const wrapper = shallow(result);
 
-        expect(wrapper.contains(<div>fakeError</div>)).to.equal(true);
-      });
+      expect(wrapper.contains(<span>fakeLabel</span>)).to.equal(true);
     });
+  });
 
-    describe('when there is a result', () => {
-      it('should return a div with error message', () => {
-        const result = renderResult([{ label: 'Paris' }, { label: 'Toulouse' }]);
-        const wrapper = shallow(result);
-        const expectedResult = <ul><li>Paris</li><li>Toulouse</li></ul>;
+  describe('getSuggestionValue', () => {
+    it('should return label from the parameter object', () => {
+      const result = getSuggestionValue({ label: 'fakeLabel' });
 
-        expect(wrapper.contains(expectedResult)).to.equal(true);
-      });
+      expect(result).to.equal('fakeLabel');
     });
   });
 });

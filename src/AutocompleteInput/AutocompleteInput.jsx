@@ -1,40 +1,50 @@
 import React, { Component } from 'react';
+import Autosuggest from 'react-autosuggest';
 import ApiHelper from '../ApiHelper/ApiHelper';
 
-function renderItem(item, idx) {
-  return <li key={idx}>{ item.label }</li>;
+export function renderSuggestion(suggestion) {
+  return <span>{ suggestion.label }</span>;
 }
 
-export function renderResult(result, err) {
-  if (err) {
-    return <div>{ err.message }</div>;
-  }
-
-  return <ul>{ result.map(renderItem) }</ul>;
+export function getSuggestionValue(suggestion) {
+  return suggestion.label;
 }
 
 class AutocompleteInput extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { result: [], err: '' };
+    this.state = { result: [], err: '', value: '' };
   }
 
-  onChange(event, fetcher) {
-    const query = event.target.value;
-
-    return fetcher(query)
-      .then(response => this.setState(response));
+  onSuggestionsFetchRequested({ value }, fetcher) {
+    return fetcher(value)
+      .then(({ result, err }) => this.setState({ result, err }));
   }
 
   render() {
+    const { value, result } = this.state;
+
+    const inputProps = {
+      placeholder: 'Rechercher une adresse',
+      value,
+      onChange: (event, { newValue }) => {
+        this.setState({ value: newValue });
+      },
+    };
+
+    // Finally, render it!
     return (
-      <div>
-        <input
-          onChange={(e, fetcher = ApiHelper.fetchFromBAN) => this.onChange(e, fetcher)}
-        />
-        { renderResult(this.state.result, this.state.err) }
-      </div>
+      <Autosuggest
+        suggestions={result}
+        onSuggestionsFetchRequested={inputValue =>
+          this.onSuggestionsFetchRequested(inputValue, ApiHelper.fetchFromBAN)
+        }
+        onSuggestionsClearRequested={() => this.setState({ result: [] })}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        inputProps={inputProps}
+      />
     );
   }
 }
