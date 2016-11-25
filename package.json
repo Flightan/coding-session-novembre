@@ -5,11 +5,11 @@
   "author": "Tribu WebF",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --progress --inline --hot --quiet --colors",
+    "start": "webpack-dev-server --progress --inline --hot --quiet --colors --open",
     "build": "webpack",
     "lint": "eslint src/**/*.jsx",
     "mocha": "mocha --reporter spec --compilers js:babel-register -r jsdom-global/register --recursive 'src/**/*.spec.{js,jsx}'",
-    "test": "npm run lint & npm run mocha"
+    "test": "yarn lint & yarn mocha"
   },
   "devDependencies": {
     "babel-loader": "^6.2.5",
@@ -22,6 +22,8 @@
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
+    "enzyme": "^2.5.1",
+    "html-webpack-plugin": "^2.22.0",
     "jsdom": "^9.6.0",
     "jsdom-global": "^2.1.0",
     "mocha": "^3.1.2",
@@ -30,7 +32,6 @@
   },
   "dependencies": {
     "babel-core": "^6.18.2",
-    "enzyme": "^2.5.1",
     "html-webpack-plugin": "^2.22.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

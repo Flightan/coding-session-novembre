@@ -1,7 +1,8 @@
 import React from 'react';
+import AutocompleteInput from '../AutocompleteInput/AutocompleteInput';
 
 const App = () => (
-  <div>Hello world</div>
+  <AutocompleteInput />
 );
 
 export default App;
