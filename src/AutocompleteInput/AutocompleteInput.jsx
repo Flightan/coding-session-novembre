@@ -38,9 +38,10 @@ class AutocompleteInput extends Component {
     return (
       <Autosuggest
         suggestions={result}
+        onSuggestionSelected={(event, { suggestion: { coordinates } }) =>
+          this.props.onSuggestionSelected(coordinates)}
         onSuggestionsFetchRequested={inputValue =>
-          this.onSuggestionsFetchRequested(inputValue, ApiHelper.fetchFromBAN)
-        }
+          this.onSuggestionsFetchRequested(inputValue, ApiHelper.fetchFromBAN)}
         onSuggestionsClearRequested={() => this.setState({ result: [] })}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
@@ -49,5 +50,9 @@ class AutocompleteInput extends Component {
     );
   }
 }
+
+AutocompleteInput.propTypes = {
+  onSuggestionSelected: React.PropTypes.func,
+};
 
 export default AutocompleteInput;
