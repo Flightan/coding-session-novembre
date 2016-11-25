@@ -17,12 +17,12 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.16.3",
     "chai": "^3.5.0",
+    "enzyme": "^2.5.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
-    "enzyme": "^2.5.1",
     "html-webpack-plugin": "^2.22.0",
     "jsdom": "^9.6.0",
     "jsdom-global": "^2.1.0",
@@ -32,9 +32,10 @@
   },
   "dependencies": {
     "babel-core": "^6.18.2",
-    "html-webpack-plugin": "^2.22.0",
+    "fetch-mock": "^5.5.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^2.0.1"
   }
 }

@@ -6,6 +6,7 @@ const config = {
   context: __dirname,
 
   entry: [
+    'whatwg-fetch',
     'webpack-dev-server/client?http://127.0.0.1:8080',
     './src/index.jsx',
   ],
