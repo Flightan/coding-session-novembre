@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import ApiHelper from '../ApiHelper/ApiHelper';
-import './AutocompleteInput.css';
+import theme from './AutocompleteInput.css';
 
 export function renderSuggestion(suggestion) {
   return <span>{ suggestion.label }</span>;
@@ -37,6 +37,7 @@ class AutocompleteInput extends Component {
     // Finally, render it!
     return (
       <Autosuggest
+        theme={theme}
         suggestions={result}
         onSuggestionSelected={(event, { suggestion: { coordinates } }) =>
           this.props.onSuggestionSelected(coordinates)}
