@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --progress --inline --hot --quiet --colors",
     "build": "webpack",
     "lint": "eslint src/**/*.jsx",
-    "mocha": "mocha --reporter nyan --compilers js:babel-register -r jsdom-global/register --recursive 'src/**/*.spec.jsx'",
+    "mocha": "mocha --reporter spec --compilers js:babel-register -r jsdom-global/register --recursive 'src/**/*.spec.{js,jsx}'",
     "test": "npm run lint & npm run mocha"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "babel-core": "^6.18.2",
     "html-webpack-plugin": "^2.22.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
