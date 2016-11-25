@@ -49,4 +49,16 @@ describe('ApiHelper component', () => {
         });
     });
   });
+
+  describe('when the query is empty', () => {
+    it('should return an empty response', () => {
+      const query = '';
+
+      return ApiHelper.fetchFromBAN(query)
+        .then((response) => {
+          expect(response.result).to.have.length(0);
+          expect(response.err).to.an('undefined');
+        });
+    });
+  });
 });

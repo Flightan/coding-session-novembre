@@ -1,4 +1,8 @@
 function fetchFromBAN(query) {
+  if (!query) {
+    return Promise.resolve({ result: [] });
+  }
+
   return fetch(`https://api-adresse.data.gouv.fr/search/?q=${query}`, { method: 'get' })
     .then(response => response.json())
     .then((json) => {
