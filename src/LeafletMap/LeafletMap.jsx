@@ -1,8 +1,8 @@
 import React from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 
-const LeafletMap = props => {
-  const position = [props.coordinates[1], props.coordinates[0]];
+const LeafletMap = ({ coordinates }) => {
+  const position = [coordinates[1], coordinates[0]];
   return (
     <Map center={position} zoom={13} style={{ height: '100vh', width: '100%' }}>
       <TileLayer
@@ -11,6 +11,10 @@ const LeafletMap = props => {
       />
     </Map>
   );
+};
+
+LeafletMap.propTypes = {
+  coordinates: React.PropTypes.isRequired,
 };
 
 export default LeafletMap;
