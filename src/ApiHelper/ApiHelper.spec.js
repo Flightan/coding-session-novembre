@@ -9,8 +9,12 @@ describe('ApiHelper', () => {
     });
   });
 
+  after(() => {
+    fetchMock.reset();
+  });
+
   it('should fetch from API', () => {
-    const expected = { result: [{ label: 'Paris', coordinates: [0, 1] }] };
+    const expected = { results: [{ label: 'Paris', coordinates: [0, 1] }] };
     return ApiHelper.fetchFromApi('paris')
       .then((response) => {
         expect(fetchMock.calls().matched).to.have.length(1);
