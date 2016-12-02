@@ -1,8 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
 import App from './App';
+import AutocompleteInput from '../AutocompleteInput/AutocompleteInput';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+describe('App', () => {
+  it('should contain AutocompleteInput', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.contains(<AutocompleteInput />)).to.equal(true);
+  });
 });
