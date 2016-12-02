@@ -30,10 +30,12 @@
     "babel-core": "^6.18.2",
     "chai": "^3.5.0",
     "enzyme": "^2.6.0",
+    "fetch-mock": "^5.5.0",
     "html-webpack-plugin": "^2.22.0",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.3.2",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^2.0.1"
   }
 }

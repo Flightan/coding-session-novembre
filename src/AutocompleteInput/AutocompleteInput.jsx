@@ -23,7 +23,7 @@ class AutocompleteInput extends React.Component {
   render() {
     return (
       <div>
-        <input />
+        <input onChange={event => this.inputChange(event.target.value)} />
         {this.renderResults()}
       </div>);
   }

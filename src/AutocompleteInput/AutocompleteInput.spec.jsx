@@ -6,7 +6,7 @@ import AutocompleteInput from './AutocompleteInput';
 describe('AutocompleteInput', () => {
   it('should contain an input', () => {
     const wrapper = shallow(<AutocompleteInput />);
-    expect(wrapper.contains(<input />)).to.equal(true);
+    expect(wrapper.containsMatchingElement(<input />)).to.equal(true);
   });
 
   it('should display one result', () => {
